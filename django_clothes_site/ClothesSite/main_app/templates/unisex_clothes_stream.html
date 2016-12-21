@@ -1,0 +1,40 @@
+<p>This is the clothes stream</p>
+<!-- 3 Clothes Item per row -->
+<div class="row">
+    {% for clothes_item in clothes %}
+        {% if clothes.gender == 'unisex' %}
+            <div id="{{clothes_item.id}}" class="col-md-4 clothing-item-holder">
+                <div class="panel panel-default">
+                    <a href="/{{clothes_item.id}}/">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ clothes_item.name }}</h3>
+                        </div>
+                    </a>
+                    <div class="panel-body">
+                        <a href="/{{clothes_item.id}}/">
+                            <p>Here is a link to {{ clothes_item.name }}</p>
+                            <img src="{{ clothes_item.image.url }}" >
+                        </a>
+                    {% if user.is_authenticated and clothes_item.id in favorite_clothes_ids %}
+                    <button data-id='{{clothes_item.id}}' type="button" class="favorite-button btn btn-mini btn-success">
+                        <span class="glyphicon glyphicon-heart glyphicon-left-align" aria-hidden="true"></span>
+                    </button>
+                    {% else %}
+                    <button data-id='{{clothes_item.id}}' type="button" class="favorite-button btn btn-mini btn-danger">
+                        <span class="glyphicon glyphicon-heart glyphicon-left-align" aria-hidden="true"></span>
+                    </button>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- if last column in row -->
+            {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+            </div>
+                <br>
+            <div class="row">
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+<br>
