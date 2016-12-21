@@ -1,0 +1,41 @@
+.collapsed-panel {
+     display: none;
+}
+
+.invisible {
+     display: none;
+}
+
+.gender-buttons {
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+}
+
+gender-filter-button {
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1
+}
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+
+.clothes-choice-toggle {
+    margin:0 auto;
+    display:block;
+}
+
+.dropdown-menu {
+  left: 50%;
+  right: auto;
+  text-align: center;
+  transform: translate(-50%, 0);
+}
+
+

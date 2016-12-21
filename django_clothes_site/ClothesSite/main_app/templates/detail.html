@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div>
+<p>This is a detail page for a clothes item</p>
+<p>The name of this item is: {{ clothes_item.name }}</p>
+<p>The pk value of this item of clothing is: {{ clothes_item.pk }}</p>
+<p>The gender of this clothing item is: {{ clothes_item.gender }}</p>
+<p>The description of this item is: {{ clothes_item.description }}</p>
+<p>The size of this item is: {{ clothes_item.size }}</p>
+<p>The image for this item is: </p>
+<img src="{{ clothes_item.image.url }}" height="200">
+<p>The price of this item is: {{ clothes_item.price }}</p>
+    {% if user.is_authenticated %}
+        {% if clothes_item.id in favorite_clothes_ids %}
+        <button data-id='{{clothes_item.id}}' type="button" class="favorite-button btn btn-mini btn-success">
+            <span class="glyphicon glyphicon-heart glyphicon-left-align" aria-hidden="true"></span>
+        </button>
+        {% else %}
+        <button id="favorite" data-id='{{clothes_item.id}}' type="button" class="favorite-button btn btn-mini btn-danger">
+            <span class="glyphicon glyphicon-heart glyphicon-left-align" aria-hidden="true"></span>
+        </button>
+        {% endif %}
+    {% endif %}
+</div>
+
+{% endblock %}
